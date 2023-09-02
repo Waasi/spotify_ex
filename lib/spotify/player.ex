@@ -21,6 +21,17 @@ defmodule Spotify.Player do
   }
 
   @doc """
+  Fetch the user's playback queue.
+  [Spotify Documentation](https://developer.spotify.com/documentation/web-api/reference/get-queue)
+
+  **Method**: `GET`
+  """
+  def get_queue(conn) do
+    url = "https://api.spotify.com/v1/me/player/queue"
+    conn |> Client.get(url) |> handle_response()
+  end
+
+  @doc """
   Add an item to the user's playback queue.
   [Spotify Documentation](https://developer.spotify.com/documentation/web-api/reference/player/add-to-queue/)
 
